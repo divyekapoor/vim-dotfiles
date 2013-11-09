@@ -37,7 +37,7 @@ cabbr <expr> %% expand('%:p:h')
 set autochdir
 set autoindent
 set backspace=indent,eol,start
-set background=light
+set background=dark
 set expandtab
 set foldmethod=indent
 set hlsearch

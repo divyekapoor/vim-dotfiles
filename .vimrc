@@ -7,7 +7,6 @@ call vundle#rc()
 
 " Configure vundles.
 Bundle 'gmarik/vundle'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'Syntastic'
 Bundle 'SingleCompile'
 

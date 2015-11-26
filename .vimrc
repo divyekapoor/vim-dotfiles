@@ -3,12 +3,15 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+call vundle#begin()
 
 " Configure vundles.
-Bundle 'gmarik/vundle'
-Bundle 'Syntastic'
-Bundle 'SingleCompile'
+Plugin 'gmarik/vundle'
+Plugin 'Syntastic'
+Plugin 'SingleCompile'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+call vundle#end()
 
 " Required by Vundle.
 filetype plugin indent on
@@ -64,8 +67,51 @@ nmap ,d :bd<CR>
 nmap ,r :SCCompileRun<cr>
 nmap ,c :SCCompile<cr>
 
+" Buffer motion between files.
+function! MoveToFile(pattern, extension)
+  let l:filename = expand("%:p")
+  let l:subfilename = substitute(l:filename, a:pattern, a:extension, "")
+  exe 'edit ' . l:subfilename
+endfunction
+
+function! MoveToCCFile()
+  call MoveToFile('\(_test.cc\|.h\)$', ".cc")
+endfunction
+
+function! MoveToHFile()
+  call MoveToFile('\(_test.cc\|.cc\)$', ".h")
+endfunction
+
+function! MoveToTestFile()
+  call MoveToFile('\(.cc\|.h\)$', "_test.cc")
+endfunction
+
+nmap ,h :call MoveToHFile()<CR>
+nmap ,t :call MoveToTestFile()<CR>
+nmap ,c :call MoveToCCFile()<CR>
+
+" CtrlP buffer switching by default.
+let g:ctrlp_cmd = 'CtrlPBuffer'
+
+" Netrw explorer.
+" Edit in same window. Split vertically.
+let g:netrw_winsize = 0
+let g:netrw_chgwin = -1
+nmap <C-m> :Vexplore<CR>
+
 " Map qq to qa to quit all windows.
 cmap qq qa
+nmap qq :qa<CR>
+
+" Make Vs map to vs for splitting windows.
+cmap Vs vs
+
+" Make C-s save files. Requires stty -ixon -ixoff in your .bashrc.
+imap <C-s> <ESC>:w<CR>
+nmap <C-s> :w<CR>
+
+" Make C-i toggle between insert and paste mode.
+set pastetoggle=<C-i>
 
 " Make C-h delete the last word.
 imap <C-h> <C-w>
@@ -167,6 +213,27 @@ xnoremap <silent> <C-j> :<C-u>call MoveVisualDown()<CR>
 " Jump to last known position in file. See :help line for details.
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+" Make for dark background. Solarized color scheme.
+set background=dark
+let g:solarized_termcolors = 256
+let g:solarized_contrast = "high"
+colorscheme solarized
+
+" Clear the highlight after searching
+nmap <silent> <C-c> :let @/ = ""<CR>
+
+" Word motion
+nmap l w
+nmap h b
+
+" Map 0 to logical beginning of the line.
+" It's easier than ^
+nmap 0 ^
+
+" Jump to last edited location in the file.
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " Set path for gf.
 set path+=.

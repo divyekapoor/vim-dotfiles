@@ -1,1 +1,7 @@
 stty -ixon -ixoff
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+

@@ -64,9 +64,12 @@ nmap ,n :bnext<CR>
 nmap ,p :bprev<CR>
 nmap ,b :ls<CR>
 nmap ,, :bnext<CR>
+nmap ,s :vsplit<CR>:bnext<CR>
 nmap ,d :bd<CR>
 nmap ,r :SCCompileRun<cr>
 nmap ,c :SCCompile<cr>
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
 
 " Buffer motion between files.
 function! MoveToFile(pattern, extension)

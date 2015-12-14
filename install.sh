@@ -11,10 +11,8 @@ echo "PluginInstall done."
 echo "Installing .aliases."
 cp -i .aliases ~/.aliases
 
-if [ -f ~/.bash_aliases ]; then
-  echo "Adding to .bash_aliases"
-  echo ". ~/.aliases" >> ~/.bash_aliases
-fi
+echo "Adding to .bash_aliases"
+echo ". ~/.aliases" >> ~/.bash_aliases
 
 echo "Please source your .bashrc to continue."
 echo "Done"

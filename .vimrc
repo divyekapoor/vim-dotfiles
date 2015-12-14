@@ -10,6 +10,7 @@ Plugin 'gmarik/vundle'
 Plugin 'Syntastic'
 Plugin 'SingleCompile'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Solarized'
 
 call vundle#end()
 

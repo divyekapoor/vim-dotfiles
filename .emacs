@@ -46,7 +46,9 @@
   (define-key ido-completion-map (kbd "ESC") 'keyboard-escape-quit))
 (add-hook 'ido-setup-hook 'ido-key-mappings)
 
-(load-theme 'solarized-dark t)
+;; This messes things up if the terminal is configured correctly.
+;; ignore it unless you need it.
+;; (load-theme 'solarized-dark t)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)

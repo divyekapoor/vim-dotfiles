@@ -1,6 +1,5 @@
 (require 'compilation-colorization) ;; colorizes output of (i)grep
 (require 'package)                  ;; ELPA
-(require 'color-theme)
 
 (package-initialize)
 
@@ -10,6 +9,11 @@
                          ("GELPA" . "http://internal-elpa.appspot.com/packages/")))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/my-plugins"))
+(add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/my-plugins/emacs-color-theme-solarized"))
+(set-terminal-parameter nil 'background-mode 'dark)
+(set-frame-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
+
 (require 'closure-template-html-mode)
 
 ;;;;;;;;;;;;;;; Set up packages ;;;;;;;;;;;;;;;;;;;;
@@ -120,9 +124,9 @@
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/scratch/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/scratch/backups/"))))
  '(comment-auto-fill-only-comments t)
- '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(evil-shift-width 2)
  '(fill-column 80)
+ '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(safe-local-variable-values (quote ((sh-indent-comment . t))))
  '(tab-always-indent (quote complete))

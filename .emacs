@@ -32,8 +32,8 @@
 (global-evil-matchit-mode 1)
 
 (require 'linum+)
-;;(setq linum-format "%4d\u2502")
-(setq linum+-smart-format "%%%dd ")
+(setq linum-format "%4d ")
+(set-face-attribute 'linum nil :foreground "#666666")
 (global-linum-mode)
 
 (require 'move-text)
@@ -45,10 +45,6 @@
   "My key mappings for IDO completion prompts."
   (define-key ido-completion-map (kbd "ESC") 'keyboard-escape-quit))
 (add-hook 'ido-setup-hook 'ido-key-mappings)
-
-;; This messes things up if the terminal is configured correctly.
-;; ignore it unless you need it.
-;; (load-theme 'solarized-dark t)
 
 (setq save-place-file "~/.emacs.d/scratch/saveplace")
 (setq-default save-place t)

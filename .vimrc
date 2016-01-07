@@ -11,6 +11,7 @@ Plugin 'Syntastic'
 Plugin 'SingleCompile'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Solarized'
+Plugin 'surround.vim'
 
 call vundle#end()
 

@@ -50,7 +50,7 @@
 ;; ignore it unless you need it.
 ;; (load-theme 'solarized-dark t)
 
-(setq save-place-file "~/.emacs.d/saveplace")
+(setq save-place-file "~/.emacs.d/scratch/saveplace")
 (setq-default save-place t)
 (require 'saveplace)
 
@@ -115,14 +115,14 @@
 ;;;;;;;;;;;;;;;;;;;; Autosave Support ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Allow saving of Emacs autosaves to a separate directory
 ;; Source: http://snarfed.org/gnu_emacs_backup_files
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/scratch.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/scratch/autosaves/\\1" t))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/scratch/backups/"))))
  '(comment-auto-fill-only-comments t)
  '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(evil-shift-width 2)

@@ -1,4 +1,8 @@
--- Standard awesome library
+--
+-- Author: divyekapoor@gmail.com (Divye Kapoor)
+--
+-- Cribbed from the standard awesome library and modified to suit my needs.
+--
 require("awful")
 require("awful.autofocus")
 require("awful.rules")

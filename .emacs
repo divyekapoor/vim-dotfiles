@@ -38,6 +38,9 @@
 (set-face-attribute 'linum nil :foreground "#666666")
 (global-linum-mode)
 
+(setq word-wrap nil)
+(global-visual-line-mode 1)
+
 (require 'move-text)
 (require 'ido)
 (setq ido-enable-flex-matching t)

@@ -27,6 +27,9 @@
 (define-key evil-normal-state-map "=" 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map "-" 'evil-numbers/dec-at-pt)
 
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+
 (require 'evil-matchit)
 (defun evilmi-customize-keybinding ()
     (evil-define-key 'normal evil-matchit-mode-map

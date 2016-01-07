@@ -100,6 +100,7 @@
 
 (require 'fill-column-indicator)
 (add-hook 'after-change-major-mode-hook 'fci-mode)
+(setq default-major-mode 'text-mode)
 
 (require 'zencoding-mode)
 (add-hook 'html-mode-hook 'zencoding-mode)

@@ -8,6 +8,10 @@ echo "Running :PluginInstall"
 vim -S install.vim
 echo "PluginInstall done."
 
+echo "Installing .emacs"
+cp .emacs ~/
+cp -r .emacs.d/ ~/
+
 echo "Installing .aliases."
 cp -i .aliases ~/.aliases
 

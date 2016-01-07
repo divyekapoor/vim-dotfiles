@@ -14,8 +14,6 @@
 (set-frame-parameter nil 'background-mode 'dark)
 (load-theme 'solarized t)
 
-(require 'closure-template-html-mode)
-
 ;;;;;;;;;;;;;;; Set up packages ;;;;;;;;;;;;;;;;;;;;
 (require 'ace-jump-mode)
 (require 'evil)
@@ -64,9 +62,8 @@
 (setq key-chord-two-keys-delay 0.2)
 (key-chord-mode 1)
 
-;; Filladapt mode doesn't seem to be working well with a number of other modes.
-;; (require 'filladapt)
-;; (setq-default filladapt-mode t)
+(require 'closure-template-html-mode)
+(require 'lua-mode)
 
 (require 'markdown-mode)
 ;; (autoload 'markdown-mode "markdown-mode"

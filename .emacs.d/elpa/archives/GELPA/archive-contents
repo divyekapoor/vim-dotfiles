@@ -1,0 +1,10 @@
+(1
+(borgsearch . [(0 4) nil "a simple emacs wrapper for borgsearch CLI -*- lexical-binding: t -*-" single])
+(citc . [(1 5) nil "control g5/citc from Emacs -*- lexical-binding: t -*-" single])
+(ditrack-procfs . [(0 1) nil "track shell-mode cwd based on procfs, not prompts" single])
+(edit-server-htmlize . [(0 1) nil "(de)HTMLization hooks for edit-server.el" single])
+(fast-file-attributes . [(0 1 1) nil "speed up file-attributes and friends" single])
+(g4-gutter . [(0 46 2) nil "Port of Sublime Text 2 plugin GitGutter, for g4 -*- lexical-binding: t; -*-" single])
+(google-dbesre . [(0 2) ((multi-term (20140721 1422)) (auto-complete (20140803 2118))) "Utils for Oracle DBAs using emacs" single])
+(ob-dremel . [(0 1) nil "org-babel functions for dremel evaluation" single])
+(squery . [(0 1) nil "Major mode for squery" single]))

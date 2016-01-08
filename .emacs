@@ -41,8 +41,10 @@
 (set-face-attribute 'linum nil :foreground "#666666")
 (global-linum-mode)
 
-(setq word-wrap nil)
-(global-visual-line-mode 1)
+;; Don't word-wrap at the end of the line.
+;; Wrap at window edge.
+(setq-default word-wrap nil)
+(add-hook 'visual-line-mode-hook (lambda () (setq-local word-wrap nil)))
 
 (require 'move-text)
 (require 'ido)
@@ -131,10 +133,12 @@
  '(evil-shift-width 2)
  '(fill-column 80)
  '(frame-background-mode (quote dark))
+ '(global-visual-line-mode t)
  '(inhibit-startup-screen t)
  '(safe-local-variable-values (quote ((sh-indent-comment . t))))
  '(tab-always-indent (quote complete))
- '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
+ '(word-wrap nil))
 
 ;;;;;;;;;;;;;;;;;;;; Emacs customizations ;;;;;;;;;;;;;;;;;;;;;;;
 (setq-default tab-width 2)
@@ -250,7 +254,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;; Buffer customizations ;;;;;;;;;;;;;;;;;;;;;
 (setq-default compilation-scroll-output 'first-error)
-(setq evil-shift-width 2)
 
 ;; js2-mode insists on setting the shift width to 4. Make it conform better to
 ;; Google style.
@@ -277,6 +280,10 @@
   (other-window 1)
   (next-real-buffer))
 
+;; Prefer vertical splits to horizontal splits.
+(setq split-height-threshold nil)
+(setq split-width-threshold 80)
+
 ;;;;;;;;;;;;;;;;;; Comma based commands ;;;;;;;;;;;;;;;;;;;;;;;
 (define-key evil-normal-state-map ",," 'next-real-buffer)
 (define-key evil-normal-state-map ",b" 'ido-switch-buffer)
@@ -284,8 +291,11 @@
 (define-key evil-normal-state-map ",c" 'comment-or-uncomment-region)
 (define-key evil-visual-state-map ",c" 'comment-or-uncomment-region)
 (define-key evil-normal-state-map (kbd "C-O") 'ido-find-file)
-(define-key evil-normal-state-map ",f" 'ido-find-file)
-(define-key evil-visual-state-map ",F" 'google-clang-format)
+(define-key evil-visual-state-map ",f" 'clang-format)
+(define-key evil-normal-state-map ",f" 'clang-format)
+(define-key evil-visual-state-map ",F" 'clang-format)
+(define-key evil-normal-state-map ",F" 'clang-format)
+(define-key evil-normal-state-map ",p" 'ido-find-file)
 (define-key evil-normal-state-map ",s" 'split-window-vertically-and-use-next-buffer)
 (define-key evil-normal-state-map ",t" 'google-rotate-among-files)
 (define-key evil-normal-state-map "w1" 'delete-other-windows)

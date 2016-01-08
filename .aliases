@@ -4,5 +4,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ls='/bin/ls -Ah --color=auto'
+alias l='/bin/ls -Ah -F -l --color=auto'
 
 setxkbmap -option "ctrl:swapcaps"
+xset r rate 135 30

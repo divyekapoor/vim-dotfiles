@@ -209,22 +209,21 @@ function reduce_volume ()
   awful.util.spawn("amixer -q set Master 5%-")
 end
 
-function pause ()
-  awful.util.spawn("cmus-remote -C player-pause")
-end
-
-function next_track ()
-  awful.util.spawn("cmus-remote -n")
-end
-
-function prev_track ()
-  awful.util.spawn("cmus-remote -r")
-end
-
 function mute ()
   awful.util.spawn("amixer -q -D pulse set Master toggle")
 end
 
+function cmus_pause ()
+  awful.util.spawn("cmus-remote -C player-pause")
+end
+
+function cmus_next_track ()
+  awful.util.spawn("cmus-remote -n")
+end
+
+function cmus_prev_track ()
+  awful.util.spawn("cmus-remote -r")
+end
 
 
 -- {{{ Key bindings
@@ -281,19 +280,19 @@ globalkeys = awful.util.table.join(
 
     -- Audio controls
     -- Prior and Next are PageUp and PageDn keys respectively.
-    awful.key({ modkey,           }, "Prior", prev_track),
-    awful.key({ modkey,           }, "Next", next_track),
+    awful.key({ modkey,           }, "Prior", cmus_prev_track),
+    awful.key({ modkey,           }, "Next", cmus_next_track),
     awful.key({ modkey,           }, "-", reduce_volume),
     awful.key({ modkey,           }, "+", raise_volume),
     awful.key({ modkey,           }, "=", raise_volume),
     awful.key({                   }, "XF86AudioRaiseVolume", raise_volume),
     awful.key({                   }, "XF86AudioLowerVolume", reduce_volume),
     awful.key({                   }, "XF86AudioMute", mute),
-    awful.key({                   }, "XF86AudioPause", pause),
-    awful.key({                   }, "XF86AudioStop", pause),
-    awful.key({                   }, "XF86AudioPlay", pause),
-    awful.key({                   }, "XF86AudioPrev", prev_track),
-    awful.key({                   }, "XF86AudioNext", next_track),
+    awful.key({                   }, "XF86AudioPause", cmus_pause),
+    awful.key({                   }, "XF86AudioStop", cmus_pause),
+    awful.key({                   }, "XF86AudioPlay", cmus_pause),
+    awful.key({                   }, "XF86AudioPrev", cmus_prev_track),
+    awful.key({                   }, "XF86AudioNext", cmus_next_track),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),

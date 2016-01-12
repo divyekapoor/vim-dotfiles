@@ -1,3 +1,4 @@
+-- -*- mode: lua; -*-
 --
 -- Author: divyekapoor@gmail.com (Divye Kapoor)
 --

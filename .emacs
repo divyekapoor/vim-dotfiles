@@ -108,6 +108,7 @@
 (add-hook 'html-mode-hook 'zencoding-mode)
 (define-key evil-insert-state-map (kbd "C-e") 'zencoding-expand-line)
 
+(require 'clang-format)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations taken from mknichel's .emacs

@@ -234,7 +234,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
     awful.key({ modkey, "Control" }, "s", function () awful.layout.set(awful.layout.suit.spiral.dwindle) end),
     awful.key({ modkey, "Control" }, "m", function () awful.layout.set(awful.layout.suit.magnifier) end),
-    awful.key({ modkey, "Control" }, "f", function () awful.layout.set(awful.layout.suit.floating) end),
 
     awful.key({ modkey,           }, "j",
         function ()

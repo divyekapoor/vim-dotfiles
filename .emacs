@@ -226,7 +226,8 @@
   "In visual mode, eval the highlighted region and then move to normal mode."
   (interactive)
   (eval-region evil-visual-beginning evil-visual-end)
-  (evil-normal-state))
+  (evil-normal-state)
+  (message "Eval'd region."))
 (define-key evil-normal-state-map (kbd "C-e") 'eval-last-sexp)
 (define-key evil-visual-state-map (kbd "C-e") 'eval-region-and-move-to-normal-state)
 (define-key evil-normal-state-map (kbd "C-j") 'move-text-down)
@@ -310,8 +311,10 @@
 (define-key evil-insert-state-map (kbd "C-h") 'backward-kill-word)
 (define-key evil-normal-state-map (kbd "C-h") 'previous-multiframe-window)
 (define-key evil-visual-state-map (kbd "C-h") 'previous-multiframe-window)
+(define-key evil-motion-state-map (kbd "C-h") 'previous-multiframe-window)
 (define-key evil-normal-state-map (kbd "C-l") 'next-multiframe-window)
 (define-key evil-visual-state-map (kbd "C-l") 'next-multiframe-window)
+(define-key evil-motion-state-map (kbd "C-l") 'next-multiframe-window)
 
 ;; Meta commands reserved for emacs specific stuff.
 (define-key evil-normal-state-map (kbd "M-h") 'help-for-help)

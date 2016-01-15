@@ -26,10 +26,9 @@ let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_confirm_extra_conf = 0
 
-com! -bang W :w<bang>
-com! -bang Q :q<bang>
-com! -bang Wq :wq<bang>
-com! -bang P :set paste!
+command! -bang W :w
+command! -bang Q :q
+command! -bang Wq :wq
 nmap qq :qa<cr>
 
 " Set a command line abbreviation such that %% expands to the directory of the
@@ -110,6 +109,9 @@ nmap qq :qa<CR>
 
 " Make Vs map to vs for splitting windows.
 cmap Vs vs
+
+" Map E to edit (slow fingers!)
+command! -nargs=* -bar -bang -count=0 -complete=file E edit <args>
 
 " Make C-s save files. Requires stty -ixon -ixoff in your .bashrc.
 imap <C-s> <ESC>:w<CR>

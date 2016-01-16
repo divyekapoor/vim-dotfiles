@@ -14,6 +14,7 @@ Plugin 'Solarized'
 Plugin 'surround.vim'
 Plugin 'bling/vim-bufferline'
 Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-dispatch'
 
 call vundle#end()
 
@@ -273,6 +274,7 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 
 let g:bufferline_echo = 0
+let g:bufferline_rotate = 1
 function! AirlineInit()
   let g:airline_section_a = airline#section#create(['mode', ' ', '%l', ':', '%c'])
   let g:airline_section_c = '%{bufferline#refresh_status()}'.bufferline#get_status_string()

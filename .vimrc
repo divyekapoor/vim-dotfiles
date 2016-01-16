@@ -12,6 +12,8 @@ Plugin 'SingleCompile'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Solarized'
 Plugin 'surround.vim'
+Plugin 'bling/vim-bufferline'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()
 
@@ -241,6 +243,43 @@ nmap 0 ^
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" Configure statusline (use vim-airline)
+let g:airline#extensions#bufferline#overwrite_variables = 1
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_theme = "distinguished"
+let g:airline_detect_paste = 1
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+
+let g:bufferline_echo = 0
+function! AirlineInit()
+  let g:airline_section_a = airline#section#create(['mode', ' ', '%l', ':', '%c'])
+  let g:airline_section_c = '%{bufferline#refresh_status()}'.bufferline#get_status_string()
+  let g:airline_section_z = airline#section#create(['%p', '%%'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
 
 " Set path for gf.
 set path+=.

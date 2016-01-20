@@ -104,11 +104,12 @@ let g:ctrlp_cmd = 'CtrlPBuffer'
 " Edit in same window. Split vertically.
 let g:netrw_winsize = 0
 let g:netrw_chgwin = -1
-nmap <C-m> :Vexplore<CR>
 
 " Map qq to qa to quit all windows.
 cmap qq qa
 nmap qq :qa<CR>
+
+nmap w1 :only<CR>
 
 " Make Vs map to vs for splitting windows.
 cmap Vs vs

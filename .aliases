@@ -6,6 +6,13 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ls='/bin/ls -Ah --color=auto'
 alias l='/bin/ls -Ah -F -l --color=auto'
+alias em='emacsclient -nw'
 
 setxkbmap -option "ctrl:swapcaps"
 xset r rate 135 30
+
+function reset() {
+  /usr/bin/reset $@
+  source ~/.bashrc
+}
+

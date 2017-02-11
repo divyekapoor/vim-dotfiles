@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo apt-get install vim -y
 set -e
 echo "Cloning Vundle's git repo."
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim

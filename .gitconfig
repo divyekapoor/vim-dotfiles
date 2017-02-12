@@ -9,5 +9,11 @@
 	co = checkout
 	b = branch
 	d = difftool
+	r = reset HEAD --hard
+	unsubmit = reset HEAD~1 --soft
 [credential]
 	helper = cache --timeout=86400
+[branch]
+	autosetuprebase = always
+[aliases]
+	r = reset HEAD --hard

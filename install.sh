@@ -22,5 +22,8 @@ echo ". ~/.aliases" >> ~/.bash_aliases
 echo "Setting up git."
 cp -i .gitconfig ~/.gitconfig
 
+echo "Setting up the prompt."
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+
 echo "Please source your .bashrc to continue."
 echo "Done"

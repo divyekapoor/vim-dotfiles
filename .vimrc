@@ -25,10 +25,17 @@ filetype plugin indent on
 
 syntax on
 
+if &diff
+  set noreadonly
+endif
+
 " Configure YCM
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_confirm_extra_conf = 0
+
+" Configure FZF
+set rtp+=~/.fzf
 
 command! -bang W :w
 command! -bang Q :q

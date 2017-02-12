@@ -25,5 +25,9 @@ cp -i .gitconfig ~/.gitconfig
 echo "Setting up the prompt."
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
+echo "Setting up FZF"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 echo "Please source your .bashrc to continue."
 echo "Done"

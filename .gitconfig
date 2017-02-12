@@ -1,0 +1,13 @@
+[user]
+	email = divyekapoor@gmail.com
+	name = Divye Kapoor
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	co = checkout
+	b = branch
+	d = difftool
+[credential]
+	helper = cache --timeout=86400

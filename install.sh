@@ -19,5 +19,8 @@ cp -i .aliases ~/.aliases
 echo "Adding to .bash_aliases"
 echo ". ~/.aliases" >> ~/.bash_aliases
 
+echo "Setting up git."
+cp -i .gitconfig ~/.gitconfig
+
 echo "Please source your .bashrc to continue."
 echo "Done"

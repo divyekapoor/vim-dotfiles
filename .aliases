@@ -9,6 +9,8 @@ alias l='/bin/ls -Ah -F -l --color=auto'
 alias em='emacsclient -nw'
 alias gs='git status'
 alias gd='git diff'
+alias gdo='git diff origin/master'
+alias sync='git pull --rebase'
 alias sa='source ~/.aliases'
 alias va='vim ~/.aliases'
 

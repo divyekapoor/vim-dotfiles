@@ -11,6 +11,7 @@ alias gs='git status'
 alias gd='git diff'
 alias gdo='git diff origin/master'
 alias sync='git pull --rebase'
+alias push='git push'
 alias sa='source ~/.aliases'
 alias va='vim ~/.aliases'
 

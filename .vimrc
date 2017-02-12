@@ -14,6 +14,7 @@ Plugin 'Solarized'
 Plugin 'surround.vim'
 Plugin 'bling/vim-bufferline'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-dispatch'
 
 call vundle#end()

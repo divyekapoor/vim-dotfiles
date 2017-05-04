@@ -6,14 +6,31 @@
 [difftool]
 	prompt = false
 [alias]
+	unstage = reset HEAD
 	co = checkout
-	b = branch
-	d = difftool
+	br = branch
+	l = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(cyan)%C(bold)%d%Creset %C(cyan)(%ar)%Creset %C(green)%ae%Creset %s\"
 	r = reset HEAD --hard
-	unsubmit = reset HEAD~1 --soft
+	u = reset HEAD
+	c = commit
+	s = status
+	b = branch -vv
+	authors = shortlog -s -n --no-merges
+	d = difftool
+	undo = reset HEAD~ --soft
+	unsubmit = reset HEAD~ --hard
 [credential]
-	helper = cache --timeout=86400
+	helper = cache --timeout=2592000
 [branch]
 	autosetuprebase = always
 [aliases]
 	r = reset HEAD --hard
+[push]
+	default = simple
+[core]
+	abbrev = 5
+[branch "master"]
+	rebase = true
+	mergeoptions = --ff-only
+[merge]
+	ff = only

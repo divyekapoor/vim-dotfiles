@@ -1,0 +1,221 @@
+<keymap version="1" name="DivyeX" parent="Default for XWin">
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="alt f12" />
+    <keyboard-shortcut first-keystroke="ctrl q" />
+  </action>
+  <action id="Back">
+    <keyboard-shortcut first-keystroke="ctrl alt left" />
+    <mouse-shortcut keystroke="button4" />
+    <keyboard-shortcut first-keystroke="ctrl t" />
+    <keyboard-shortcut first-keystroke="alt left" />
+  </action>
+  <action id="CheckinProject" />
+  <action id="ChooseDebugConfiguration">
+    <keyboard-shortcut first-keystroke="shift alt f9" />
+    <keyboard-shortcut first-keystroke="shift f5" />
+  </action>
+  <action id="ChooseRunConfiguration">
+    <keyboard-shortcut first-keystroke="shift alt f10" />
+    <keyboard-shortcut first-keystroke="f5" />
+  </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl f4" />
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+  <action id="CompareTwoFiles" />
+  <action id="CompileProject">
+    <keyboard-shortcut first-keystroke="shift ctrl b" />
+  </action>
+  <action id="Console.Execute.Multiline" />
+  <action id="Console.TableResult.Reload" />
+  <action id="CopyElement" />
+  <action id="Diff.ShowDiff" />
+  <action id="DuplicatesForm.SendToLeft" />
+  <action id="EditorDeleteLine">
+    <keyboard-shortcut first-keystroke="ctrl y" />
+    <keyboard-shortcut first-keystroke="ctrl u" />
+    <keyboard-shortcut first-keystroke="ctrl d" />
+  </action>
+  <action id="EditorDuplicate" />
+  <action id="EditorLookupDown" />
+  <action id="EditorLookupUp" />
+  <action id="EditorMoveToPageBottom" />
+  <action id="EditorMoveToPageTop" />
+  <action id="EditorScrollDown" />
+  <action id="EditorScrollUp" />
+  <action id="EditorSelectWord" />
+  <action id="EditorSplitLine" />
+  <action id="EvaluateExpression">
+    <keyboard-shortcut first-keystroke="alt f8" />
+    <keyboard-shortcut first-keystroke="ctrl e" />
+  </action>
+  <action id="FileChooser.GotoDesktop" />
+  <action id="FileChooser.GotoHome" />
+  <action id="FileStructurePopup">
+    <keyboard-shortcut first-keystroke="ctrl f12" />
+    <keyboard-shortcut first-keystroke="ctrl o" />
+  </action>
+  <action id="FindInPath" />
+  <action id="FindNext">
+    <keyboard-shortcut first-keystroke="f3" />
+  </action>
+  <action id="FindPrevious">
+    <keyboard-shortcut first-keystroke="shift f3" />
+  </action>
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="alt f7" />
+    <keyboard-shortcut first-keystroke="ctrl g" />
+    <keyboard-shortcut first-keystroke="ctrl alt b" />
+  </action>
+  <action id="Forward">
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+    <mouse-shortcut keystroke="button5" />
+    <keyboard-shortcut first-keystroke="shift ctrl t" />
+    <keyboard-shortcut first-keystroke="alt right" />
+  </action>
+  <action id="GotoBookmark1" />
+  <action id="GotoImplementation">
+    <mouse-shortcut keystroke="control alt button1" />
+    <keyboard-shortcut first-keystroke="ctrl i" />
+  </action>
+  <action id="GotoLine" />
+  <action id="GotoNextError">
+    <keyboard-shortcut first-keystroke="f2" />
+    <keyboard-shortcut first-keystroke="ctrl down" />
+  </action>
+  <action id="GotoPreviousError">
+    <keyboard-shortcut first-keystroke="shift f2" />
+    <keyboard-shortcut first-keystroke="ctrl up" />
+  </action>
+  <action id="GotoRow" />
+  <action id="GotoSuperMethod" />
+  <action id="GotoTest">
+    <keyboard-shortcut first-keystroke="shift alt t" />
+  </action>
+  <action id="GotoTypeDeclaration">
+    <mouse-shortcut keystroke="shift control button1" />
+  </action>
+  <action id="GuiDesigner.Duplicate" />
+  <action id="GuiDesigner.QuickJavadoc">
+    <mouse-shortcut keystroke="alt button2" />
+  </action>
+  <action id="Images.ShowThumbnails" />
+  <action id="ImplementMethods" />
+  <action id="InsertLiveTemplate" />
+  <action id="IntroduceConstant">
+    <keyboard-shortcut first-keystroke="ctrl alt c" />
+    <keyboard-shortcut first-keystroke="ctrl alt f" />
+  </action>
+  <action id="IntroduceField" />
+  <action id="IntroduceProperty" />
+  <action id="IntroduceVariable">
+    <keyboard-shortcut first-keystroke="ctrl alt v" />
+    <keyboard-shortcut first-keystroke="ctrl l" />
+  </action>
+  <action id="IpnbCodeCellAction" />
+  <action id="IpnbRunCellInplaceAction" />
+  <action id="KotlinShellExecute" />
+  <action id="MethodHierarchy" />
+  <action id="MethodHierarchy.BaseOnThisType" />
+  <action id="MethodHierarchy.ImplementMethodAction" />
+  <action id="MoveStatementDown">
+    <keyboard-shortcut first-keystroke="shift ctrl down" />
+    <keyboard-shortcut first-keystroke="ctrl j" />
+  </action>
+  <action id="MoveStatementUp">
+    <keyboard-shortcut first-keystroke="shift ctrl up" />
+    <keyboard-shortcut first-keystroke="ctrl k" />
+  </action>
+  <action id="NextSplitter">
+    <keyboard-shortcut first-keystroke="ctrl comma" />
+  </action>
+  <action id="NextTab">
+    <keyboard-shortcut first-keystroke="ctrl page_down" />
+  </action>
+  <action id="OptimizeImports">
+    <keyboard-shortcut first-keystroke="ctrl alt o" />
+    <keyboard-shortcut first-keystroke="shift ctrl o" />
+  </action>
+  <action id="OverrideMethods" />
+  <action id="PrevSplitter">
+    <keyboard-shortcut first-keystroke="shift ctrl comma" />
+    <keyboard-shortcut first-keystroke="ctrl h" />
+  </action>
+  <action id="PreviousTab">
+    <keyboard-shortcut first-keystroke="ctrl page_up" />
+  </action>
+  <action id="QuickImplementations">
+    <keyboard-shortcut first-keystroke="shift ctrl i" />
+    <mouse-shortcut keystroke="control button2" />
+  </action>
+  <action id="QuickJavaDoc">
+    <mouse-shortcut keystroke="alt button2" />
+  </action>
+  <action id="RecentFiles" />
+  <action id="ReformatCode">
+    <keyboard-shortcut first-keystroke="ctrl alt l" />
+    <keyboard-shortcut first-keystroke="shift ctrl f" />
+  </action>
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="shift f6" />
+    <keyboard-shortcut first-keystroke="ctrl alt r" />
+  </action>
+  <action id="Replace">
+    <keyboard-shortcut first-keystroke="shift ctrl h" />
+  </action>
+  <action id="ReplaceInPath" />
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="shift f10" />
+    <keyboard-shortcut first-keystroke="ctrl r" />
+  </action>
+  <action id="RunClass">
+    <keyboard-shortcut first-keystroke="shift ctrl f10" />
+    <keyboard-shortcut first-keystroke="shift ctrl r" />
+  </action>
+  <action id="ScalaConsole.Execute" />
+  <action id="SendEOF" />
+  <action id="ShelvedChanges.Diff" />
+  <action id="ShowIntentionActions">
+    <keyboard-shortcut first-keystroke="alt enter" />
+    <keyboard-shortcut first-keystroke="ctrl enter" />
+  </action>
+  <action id="SplitVertically">
+    <keyboard-shortcut first-keystroke="shift ctrl s" />
+  </action>
+  <action id="SurroundWith" />
+  <action id="SwitchApply">
+    <keyboard-shortcut first-keystroke="shift alt enter" />
+  </action>
+  <action id="SwitchDown">
+    <keyboard-shortcut first-keystroke="shift alt down" />
+  </action>
+  <action id="SwitchLeft">
+    <keyboard-shortcut first-keystroke="shift alt left" />
+  </action>
+  <action id="SwitchRight">
+    <keyboard-shortcut first-keystroke="shift alt right" />
+  </action>
+  <action id="SwitchUp">
+    <keyboard-shortcut first-keystroke="shift alt up" />
+  </action>
+  <action id="ToggleDistractionFreeMode">
+    <keyboard-shortcut first-keystroke="ctrl 1" />
+  </action>
+  <action id="ToggleInlineHintsAction">
+    <keyboard-shortcut first-keystroke="ctrl numpad0" />
+  </action>
+  <action id="TypeHierarchy" />
+  <action id="UML.ApplyCurrentLayout" />
+  <action id="UsageView.ShowRecentFindUsages" />
+  <action id="Vcs.Log.FocusTextFilter" />
+  <action id="Vcs.ShowMessageHistory">
+    <keyboard-shortcut first-keystroke="ctrl m" />
+  </action>
+  <action id="Vcs.UpdateProject" />
+  <action id="ViewSource" />
+  <action id="XDebugger.CopyWatch" />
+  <action id="openAssertEqualsDiff" />
+  <action id="org.jetbrains.plugins.ruby.rails.console.ReloadSources" />
+  <action id="tasks.switch" />
+  <action id="tasks.switch.toolbar" />
+</keymap>

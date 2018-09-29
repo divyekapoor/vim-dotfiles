@@ -10,23 +10,122 @@ alias em='emacsclient -nw'
 alias gs='git status'
 alias gd='git difftool origin/master'
 alias gdo='git diff origin/master'
+alias gdl='git diff --name-only origin/master'
 alias sync='git pull --rebase'
 alias push='git push'
 alias src='cd ~/src'
 alias sa='source ~/.aliases'
 alias va='vim ~/.aliases'
+alias src='cd /home/dikapoor/src'
+alias llog='tail -50 ~/LOG.txt'
 
+# Swap ctrl and caps. Remove if configured via gnome-tweaks.
 setxkbmap -option "ctrl:swapcaps"
 xset r rate 135 30
 
-export GIT_PROMPT_ONLY_IN_REPO=1
-export GIT_PROMPT_THEME=Single_line
-source ~/.bash-git-prompt/gitprompt.sh
+if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
+  GIT_PROMPT_ONLY_IN_REPO=1
+  GIT_PROMPT_THEME=Single_line
+  source ~/.bash-git-prompt/gitprompt.sh
+fi
 
+export FZF_CTRL_T_COMMAND='ag -g ""'
 export EDITOR=vim
+
+# History tweaks.
+# Source: http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
+export HISTCONTROL=
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 function reset() {
   /usr/bin/reset $@
   source ~/.bashrc
 }
+
+function log() {
+  echo `date +"%Y-%m-%d %H:%M:%S %a -"` "$@" >> ~/LOG.txt
+}
+
+function gl() {
+  git l -30 "$@"
+}
+
+function l() {
+  gl "$@"
+}
+
+function b() {
+  git branch -vv
+}
+
+function sync() {
+  git pull --rebase origin master
+  git fetch --tags
+}
+
+function revert() {
+  if [ "$#" -ne 1 ]; then
+    echo 'Provide commit-ref (hash or HEAD)'
+    return 10
+  fi
+  git revert $1
+}
+
+function squash() {
+  if [ "$#" -ne 1 ]; then
+    echo Provide branch-name
+    return 10
+  fi
+  git checkout master
+  sync
+  git checkout $1
+  sync
+  local COMMITCOUNT=$(count_commit_diff)
+  if [[ ${COMMITCOUNT} -ne 1 ]]; then
+    git rebase -i master
+  else
+    echo "There is only 1 commit. Skipping squash."
+  fi
+}
+
+function cl() {
+  if [ "$#" -ne 1 ]; then
+    echo Provide branch-name
+    return 10
+  fi
+  git checkout -b $1 -t origin/master
+}
+
+function push() {
+  git push origin HEAD:master
+}
+
+function current_branch() {
+  git rev-parse --abbrev-ref HEAD
+}
+
+# Counts how many commits the local branch is behind origin.
+function count_commit_diff() {
+  git rev-list origin..HEAD --count
+}
+
+# Authors of a git repository.
+function authors() {
+  perl -e '$Author=1; $Approver=1; open(F, "git log --since 2015/01/01|");while (<F>) { $s{$1} +=$Author if /^Author:.+?<([^@]+)@/; if (/^\s+A=(.*)/) {map {$s{$_}+= $Approver} split(",", $1)}} for $k (keys %s) { $nk= substr($k, 0, -1); if (exists $s{$nk}){$s{$nk}+=$s{$k}; delete $s{$k}} } for $k (sort {$s{$b}<=> $s{$a}} keys %s) {next if $k =~/teste/;printf "%5i\t%s\n", $s{$k}, $k}' |head -10
+}
+
+function _branches() {
+  local prefix=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$(git branch)" -- ${prefix}) )
+}
+complete -F _branches prepare
+complete -F _branches submit
+complete -F _branches cl
+complete -F _branches co
+complete -F _branches squash
 

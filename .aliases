@@ -16,12 +16,14 @@ alias push='git push'
 alias src='cd ~/src'
 alias sa='source ~/.aliases'
 alias va='vim ~/.aliases'
-alias src='cd /home/dikapoor/src'
 alias llog='tail -50 ~/LOG.txt'
 
 # Swap ctrl and caps. Remove if configured via gnome-tweaks.
-setxkbmap -option "ctrl:swapcaps"
-xset r rate 135 30
+# Apply only to Linux (not Mac).
+if [[ "$(uname)" != "Darwin" ]]; then
+  setxkbmap -option "ctrl:swapcaps"
+  xset r rate 135 30
+fi
 
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1

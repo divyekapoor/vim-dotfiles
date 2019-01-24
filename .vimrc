@@ -58,6 +58,7 @@ set foldmethod=indent
 set hlsearch
 set incsearch
 set laststatus=2
+set mouse=a
 set nofoldenable
 set nosmartindent
 set number

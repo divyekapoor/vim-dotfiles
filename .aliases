@@ -25,6 +25,11 @@ if [[ "$(uname)" != "Darwin" ]]; then
   xset r rate 135 30
 fi
 
+# Turn off diacritics menus on the Mac
+if [[ "$(uname)" == "Darwin" ]]; then
+  defaults write -g ApplePressAndHoldEnabled -bool false
+fi
+
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
   GIT_PROMPT_THEME=Single_line

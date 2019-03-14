@@ -25,7 +25,8 @@ if [[ "$(uname)" != "Darwin" ]]; then
   xset r rate 135 30
 fi
 
-# Turn off diacritics menus on the Mac
+# Turn off Mac's diacritics accent menus which trigger on holding down "e" and other keys.
+# https://superuser.com/questions/1257641/disable-mac-typing-accent-menu
 if [[ "$(uname)" == "Darwin" ]]; then
   defaults write -g ApplePressAndHoldEnabled -bool false
 fi

@@ -34,3 +34,5 @@
 	mergeoptions = --ff-only
 [merge]
 	ff = only
+[receive]
+	denyCurrentBranch = updateInstead

@@ -16,6 +16,7 @@ fi
 
 set -e
 echo "Cloning Vundle's git repo."
+rm -rf ~/.vim/bundle/Vundle.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 echo "Install .vimrc"
 cp .vimrc $HOME/

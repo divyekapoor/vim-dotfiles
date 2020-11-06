@@ -4,18 +4,24 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias ls='/bin/ls -Ah --color=auto'
-alias l='/bin/ls -Ah -F -l --color=auto'
+alias ls='/bin/ls -Ah -G'
+alias l='/bin/ls -Ah -F -l -G'
 alias em='emacsclient -nw'
 alias gs='git status'
 alias gd='git difftool origin/master'
 alias gdo='git diff origin/master'
-alias gdl='git diff --name-only origin/master'
+alias gdl='git diff --name-only HEAD~'
+alias gdlo='git diff --name-only origin/master'
+alias gca='git commit --amend --no-edit -a'
 alias sync='git pull --rebase'
 alias push='git push'
 alias src='cd ~/src'
+alias scratch='cd ~/src/scratch'
 alias sa='source ~/.aliases'
 alias va='vim ~/.aliases'
+alias llog='tail -50 ~/LOG.txt'
+alias vk='vim ~/.config/karabiner/karabiner.json'
+alias vv='vim ~/.vimrc'
 alias llog='tail -50 ~/LOG.txt'
 
 # Swap ctrl and caps. Remove if configured via gnome-tweaks.
@@ -31,11 +37,44 @@ if [[ "$(uname)" == "Darwin" ]]; then
   defaults write -g ApplePressAndHoldEnabled -bool false
 fi
 
+
+if [[ "$(uname)" == "Darwin" ]]; then
+# export JAVA_HOME="$(/usr/libexec/java_home -v 11)"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
+else
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+fi
+
+export GOPATH=$HOME/go
+export PATH=/usr/local/opti/openssl@1.1/bin:$HOME/bin:$HOME/.fzf/bin:$GOPATH/bin:$JAVA_HOME/bin:$FLINK_HOME/bin:$PATH
+
+# ZSH completions.
+if [[ "$(basename ${SHELL})" == "zsh" ]]; then
+  if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions/:$FPATH
+  fi
+  autoload -U +X compinit && compinit
+  autoload -U +X bashcompinit && bashcompinit
+fi
+
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
+  # Optional: Performance flags.
+  # GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
+  # GIT_PROMPT_FETCH_REMOTE_STATUS=0
   GIT_PROMPT_THEME=Single_line
   source ~/.bash-git-prompt/gitprompt.sh
 fi
+
+[[ -f ~/src/arcanist/resources/shell/bash-completion ]] && source ~/src/arcanist/resources/shell/bash-completion
+[[ -f /usr/local/lib/bazel/bin/bazel-complete.bash ]] && source /usr/local/lib/bazel/bin/bazel-complete.bash
+[[ -f /usr/local/etc/bash_completion.d/bazel-complete.bash ]] && source /usr/local/etc/bash_completion.d/bazel-complete.bash
+[[ -f /usr/local/etc/bash_completion ]] && source /usr/local/etc/bash_completion
+[[ -f /usr/local/git/contrib/completion/git-completion.bash ]] && source /usr/local/git/contrib/completion/git-completion.bash
+[[ -x "$(command -v kubectl)" ]] && source <(kubectl completion bash)
+
+# heroku autocomplete setup
+HEROKU_AC_BASH_SETUP_PATH=/Users/dkapoor/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
 
 export FZF_CTRL_T_COMMAND='ag -g ""'
 export EDITOR=vim
@@ -86,8 +125,8 @@ function revert() {
 
 function squash() {
   if [ "$#" -ne 1 ]; then
-    echo Provide branch-name
-    return 10
+    squash $(current_branch)
+    return $?
   fi
   git checkout master
   sync
@@ -137,3 +176,58 @@ complete -F _branches cl
 complete -F _branches co
 complete -F _branches squash
 
+function root() {
+  cd "$(pwd | sed -e 's!\(/code/[^/]*\)/.*$!\1!')"
+}
+
+function h() {
+  local HOSTNAME="$(hostname -s)"
+  [[ "$HOSTNAME" == "dkapoor-26JJHD2" ]] && echo "mac" && return
+  [[ "$HOSTNAME" == "dev-dkapoor" ]] && echo "devapp" && return
+  [[ "$HOSTNAME" == "dev-dkapoor-2" ]] && echo "devapp" && return
+  echo ${HOSTNAME}
+}
+
+function lss() {
+  if [[ "$#" -eq 2 && "$2" == "-" ]]; then
+    cps $1 $2
+    return 0
+  fi
+  if [[ "$#" -ne 1 ]]; then
+    echo "Usage: lss s3://path/"
+    return 10
+  fi
+  local S3_PATH=$(echo $1 | sed -e 's!s3n://!s3://!' | sed -e 's!s3a://!s3://!')
+  aws s3 ls ${S3_PATH}
+}
+
+function cps() {
+  if [[ "$#" -ne 2 ]]; then
+    echo "Usage: cps s3://path/ /local/path"
+    return 10
+  fi
+  local S3_PATH=$(echo $1 | sed -e 's!s3n://!s3://!' | sed -e 's!s3a://!s3://!')
+  aws s3 cp ${S3_PATH} $2
+}
+
+function rms() {
+  if [[ "$#" -ne 1 ]]; then
+    echo "Usage: rms s3://path/"
+    return 10
+  fi
+  local S3_PATH=$(echo $1 | sed -e 's!s3n://!s3://!' | sed -e 's!s3a://!s3://!')
+  aws s3 rm --recursive ${S3_PATH}
+}
+
+function clean() {
+  git co master
+  git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
+}
+
+function s3_retention() {
+  aws s3api get-bucket-lifecycle-configuration --bucket pinlogs | grep -C 5 "$@"
+}
+
+function psgrep() {
+  ps -ef | grep "$@"
+}

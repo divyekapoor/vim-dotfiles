@@ -9,7 +9,7 @@
 	unstage = reset HEAD
 	co = checkout
 	br = branch
-	l = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(cyan)%C(bold)%d%Creset %C(cyan)(%ar)%Creset %C(green)%ae%Creset %s\"
+	l = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(cyan)%C(bold)%d%Creset %C(cyan)(%cr)%Creset %C(green)%ae%Creset %s\"
 	r = reset HEAD --hard
 	u = reset HEAD
 	c = commit
@@ -36,3 +36,8 @@
 	ff = only
 [receive]
 	denyCurrentBranch = updateInstead
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

@@ -1,5 +1,11 @@
 #!/bin/bash
-sudo apt-get install vim -y
+
+if [[ "$(uname)" != "Darwin" ]]; then
+  sudo apt-get install vim -y
+  echo "Install ITerm shell integration"
+  curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
+fi
+
 set -e
 echo "Cloning Vundle's git repo."
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim

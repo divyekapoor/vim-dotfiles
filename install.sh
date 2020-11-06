@@ -1,9 +1,17 @@
 #!/bin/bash
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  sudo apt-get install vim -y
+  sudo apt install vim bash-completion python-optcomplete -y
   echo "Install ITerm shell integration"
   curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
+elif [[ "$(uname)" == "Darwin" ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+  # Regular deps
+  brew install fzf zsh-completions bash-completion
+
+  # YCM requirements
+  brew install cmake macvim python mono go nodejs
 fi
 
 set -e
@@ -34,6 +42,10 @@ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt -
 echo "Setting up FZF"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# Install YCM.
+cd ~/.vim/bundle/YouCompleteMe && python3 install.py --all
+cd -
 
 echo "Please source your .bashrc to continue."
 echo "Done"

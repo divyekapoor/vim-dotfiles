@@ -40,6 +40,7 @@ echo "Setting up git."
 cp -i .gitconfig ~/.gitconfig
 
 echo "Setting up the prompt."
+rm -rf ~/.bash-git-prompt
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
 echo "Setting up FZF"

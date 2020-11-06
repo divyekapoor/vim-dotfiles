@@ -5,7 +5,9 @@ if [[ "$(uname)" != "Darwin" ]]; then
   echo "Install ITerm shell integration"
   curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
 elif [[ "$(uname)" == "Darwin" ]]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  if [[ "$(command -v brew)" == "" ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
 
   # Regular deps
   brew install fzf zsh-completions bash-completion htop

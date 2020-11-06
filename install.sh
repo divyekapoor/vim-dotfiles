@@ -18,7 +18,7 @@ fi
 
 set -e
 echo "Cloning Vundle's git repo."
-rm -rfi ~/.vim/bundle/Vundle.vim
+rm -rf ~/.vim/bundle/Vundle.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 echo "Install .vimrc"
 cp .vimrc $HOME/
@@ -40,11 +40,11 @@ echo "Setting up git."
 cp -i .gitconfig ~/.gitconfig
 
 echo "Setting up the prompt."
-rm -rfi ~/.bash-git-prompt
+rm -rf ~/.bash-git-prompt
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
 echo "Setting up FZF"
-rm -rfi ~/.fzf
+rm -rf ~/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 

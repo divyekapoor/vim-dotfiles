@@ -31,13 +31,6 @@ if [[ "$(uname)" != "Darwin" ]]; then
   xset r rate 135 30
 fi
 
-# Turn off Mac's diacritics accent menus which trigger on holding down "e" and other keys.
-# https://superuser.com/questions/1257641/disable-mac-typing-accent-menu
-if [[ "$(uname)" == "Darwin" ]]; then
-  defaults write -g ApplePressAndHoldEnabled -bool false
-fi
-
-
 if [[ "$(uname)" == "Darwin" ]]; then
 # export JAVA_HOME="$(/usr/libexec/java_home -v 11)"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
@@ -49,15 +42,15 @@ export GOPATH=$HOME/go
 export PATH=/usr/local/opti/openssl@1.1/bin:$HOME/bin:$HOME/.fzf/bin:$GOPATH/bin:$JAVA_HOME/bin:$FLINK_HOME/bin:$PATH
 
 # ZSH completions.
-if [[ "$(basename ${SHELL})" == "zsh" ]]; then
+if [[ "$(basename ${SHELL})" == "zsh" && -o login && -o interactive ]]; then
   if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions/:$FPATH
   fi
-  autoload -U +X compinit && compinit
   autoload -U +X bashcompinit && bashcompinit
 fi
 
-if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
+
+if [[ -f ~/.bash-git-prompt/gitprompt.sh  && "$(basename $SHELL)" == "bash" ]]; then
   GIT_PROMPT_ONLY_IN_REPO=1
   # Optional: Performance flags.
   # GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
@@ -69,9 +62,15 @@ fi
 [[ -f ~/src/arcanist/resources/shell/bash-completion ]] && source ~/src/arcanist/resources/shell/bash-completion
 [[ -f /usr/local/lib/bazel/bin/bazel-complete.bash ]] && source /usr/local/lib/bazel/bin/bazel-complete.bash
 [[ -f /usr/local/etc/bash_completion.d/bazel-complete.bash ]] && source /usr/local/etc/bash_completion.d/bazel-complete.bash
-[[ -f /usr/local/etc/bash_completion ]] && source /usr/local/etc/bash_completion
-[[ -f /usr/local/git/contrib/completion/git-completion.bash ]] && source /usr/local/git/contrib/completion/git-completion.bash
 [[ -x "$(command -v kubectl)" ]] && source <(kubectl completion bash)
+
+if [[ "$(basename $SHELL)" == "zsh" ]]; then
+  # [[ -f /usr/local/git/contrib/completion/git-completion.zsh ]] && source /usr/local/git/contrib/completion/git-completion.zsh
+  :
+else
+  [[ -f /usr/local/git/contrib/completion/git-completion.bash ]] && source /usr/local/git/contrib/completion/git-completion.bash
+  [[ -f /usr/local/etc/bash_completion ]] && source /usr/local/etc/bash_completion
+fi
 
 # heroku autocomplete setup
 HEROKU_AC_BASH_SETUP_PATH=/Users/dkapoor/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;

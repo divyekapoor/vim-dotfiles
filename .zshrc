@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # export ZSH_THEME="afowler"
 # export ZSH_THEME="clean"
 # export ZSH_THEME="gallifrey"
-export ZSH_THEME="jnrowe"
+export ZSH_THEME="macovsky"
 
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
@@ -43,7 +43,13 @@ export PATH=~/bin:$PATH
 cdpath=(~ )
 
 #export PROMPT='[%m %~]%# '
-export RPROMPT='[%t]'
+export RPROMPT='[%D{%-I:%M:%S %p}]'
 alias ipython='ipython -noconfirm_exit'
 alias gits='git status'
 alias gitc='git commit'
+
+
+[-f ~/.aliases ] && source ~/.aliases
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

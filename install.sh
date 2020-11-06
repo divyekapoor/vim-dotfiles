@@ -17,7 +17,7 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   fi
 
   # Regular deps
-  brew install fzf zsh-completions bash-completion htop az
+  brew install fzf zsh-completions bash-completion htop ag bash-git-prompt
 
   # YCM requirements
   brew install cmake macvim python mono go nodejs
@@ -47,9 +47,13 @@ echo ". ~/.aliases" >> ~/.bash_aliases
 echo "Setting up git."
 cp -i .gitconfig ~/.gitconfig
 
-echo "Setting up the prompt."
+echo "Setting up the bash prompt."
 rm -rf ~/.bash-git-prompt
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+
+echo "Setting up the zsh prompt."
+rm -rf ~/.zsh-git-prompt
+git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.zsh-git-prompt --depth=1
 
 echo "Setting up FZF"
 rm -rf ~/.fzf

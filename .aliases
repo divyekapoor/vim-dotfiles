@@ -50,13 +50,14 @@ if [[ "$(basename ${SHELL})" == "zsh" && -o login && -o interactive ]]; then
 fi
 
 
-if [[ -f ~/.bash-git-prompt/gitprompt.sh  && "$(basename $SHELL)" == "bash" ]]; then
+if [[  && "$(basename $SHELL)" == "bash" ]]; then
   GIT_PROMPT_ONLY_IN_REPO=1
   # Optional: Performance flags.
   # GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
   # GIT_PROMPT_FETCH_REMOTE_STATUS=0
   GIT_PROMPT_THEME=Single_line
-  source ~/.bash-git-prompt/gitprompt.sh
+  [[ -f ~/.bash-git-prompt/gitprompt.sh ]] && source ~/.bash-git-prompt/gitprompt.sh
+  [[ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]] &&  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
 [[ -f ~/src/arcanist/resources/shell/bash-completion ]] && source ~/src/arcanist/resources/shell/bash-completion

@@ -17,7 +17,8 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   fi
 
   # Regular deps
-  brew install fzf zsh-completions bash-completion htop ag bash-git-prompt
+  brew install fzf zsh-completions bash-completion htop ag bash-git-prompt mysql rustup yarn
+  rustup-init
 
   # YCM requirements
   brew install cmake macvim python mono go nodejs

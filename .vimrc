@@ -42,6 +42,7 @@ command! -bang W :w
 command! -bang Q :q
 command! -bang Wq :wq
 nmap qq :qa<cr>
+cmap Qa qa
 
 " Set a command line abbreviation such that %% expands to the directory of the
 " current file. Source:

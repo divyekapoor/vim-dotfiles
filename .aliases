@@ -27,7 +27,7 @@ alias llog='tail -50 ~/LOG.txt'
 # Swap ctrl and caps. Remove if configured via gnome-tweaks.
 # Apply only to Linux (not Mac).
 if [[ "$(uname)" != "Darwin" ]]; then
-  setxkbmap -option "ctrl:swapcaps"
+  # setxkbmap -option "ctrl:swapcaps"
   # xset r rate 135 30
 fi
 
@@ -91,7 +91,13 @@ export EDITOR=vim
 
 function reset() {
   /usr/bin/reset $@
-  source ~/.bashrc
+  if [[ $(basename "$SHELL") == "bash" ]]; then
+    source ~/.bashrc
+  fi
+
+  if [[ $(basename "$SHELL") == "zsh" ]]; then
+    source ~/.zshrc
+  fi
 }
 
 function log() {

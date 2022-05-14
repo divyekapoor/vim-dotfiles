@@ -50,7 +50,7 @@ if [[ "$(basename ${SHELL})" == "zsh" && -o login && -o interactive ]]; then
 fi
 
 
-if [[  && "$(basename $SHELL)" == "bash" ]]; then
+if [[ "$(basename $SHELL)" == "bash" ]]; then
   GIT_PROMPT_ONLY_IN_REPO=1
   # Optional: Performance flags.
   # GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0

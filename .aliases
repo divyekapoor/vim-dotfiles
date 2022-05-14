@@ -28,7 +28,7 @@ alias llog='tail -50 ~/LOG.txt'
 # Apply only to Linux (not Mac).
 if [[ "$(uname)" != "Darwin" ]]; then
   setxkbmap -option "ctrl:swapcaps"
-  xset r rate 135 30
+  # xset r rate 135 30
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -58,6 +58,16 @@ if [[ "$(basename $SHELL)" == "bash" ]]; then
   GIT_PROMPT_THEME=Single_line
   [[ -f ~/.bash-git-prompt/gitprompt.sh ]] && source ~/.bash-git-prompt/gitprompt.sh
   [[ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]] &&  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+
+  # History tweaks.
+  # Source: http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
+  export HISTCONTROL=
+  export HISTSIZE=100000                   # big big history
+  export HISTFILESIZE=100000               # big big history
+  shopt -s histappend                      # append to history, don't overwrite it
+
+  # Save and reload the history after each command finishes
+  export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 fi
 
 [[ -f ~/src/arcanist/resources/shell/bash-completion ]] && source ~/src/arcanist/resources/shell/bash-completion
@@ -78,16 +88,6 @@ HEROKU_AC_BASH_SETUP_PATH=/Users/dkapoor/Library/Caches/heroku/autocomplete/bash
 
 export FZF_CTRL_T_COMMAND='ag -g ""'
 export EDITOR=vim
-
-# History tweaks.
-# Source: http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
-export HISTCONTROL=
-export HISTSIZE=100000                   # big big history
-export HISTFILESIZE=100000               # big big history
-shopt -s histappend                      # append to history, don't overwrite it
-
-# Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 function reset() {
   /usr/bin/reset $@

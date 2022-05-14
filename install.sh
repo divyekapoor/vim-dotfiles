@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go -y
+  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go gh -y
   echo "Install ITerm shell integration"
   curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
 elif [[ "$(uname)" == "Darwin" ]]; then

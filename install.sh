@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  sudo apt install vim bash-completion python-optcomplete htop nethogs iotop silversearcher-ag -y
+  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go -y
   echo "Install ITerm shell integration"
   curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
 elif [[ "$(uname)" == "Darwin" ]]; then
@@ -65,7 +65,7 @@ echo "Setting up oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install YCM.
-cd ~/.vim/bundle/YouCompleteMe && python3 install.py --all
+cd ~/.vim/bundle/YouCompleteMe && python3 install.py --all --verbose
 cd -
 
 echo "Please source your .bashrc or .zshrc to continue."

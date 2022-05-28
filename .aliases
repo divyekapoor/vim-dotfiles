@@ -41,7 +41,6 @@ fi
 
 export GOPATH=$HOME/go
 export PATH=/usr/local/opti/openssl@1.1/bin:$HOME/bin:$HOME/.fzf/bin:$GOPATH/bin:$JAVA_HOME/bin:$FLINK_HOME/bin:$PATH
-export ZSH_THEME="lukerandall"
 
 # ZSH completions.
 if [[ "$(basename ${SHELL})" == "zsh" && -o login && -o interactive ]]; then
@@ -49,6 +48,9 @@ if [[ "$(basename ${SHELL})" == "zsh" && -o login && -o interactive ]]; then
     FPATH=$(brew --prefix)/share/zsh-completions/:$FPATH
   fi
   autoload -U +X bashcompinit && bashcompinit
+  if [[ "$ZSH_THEME" != "lukerandall" ]]; then
+    omz theme use lukerandall
+  fi
 fi
 
 

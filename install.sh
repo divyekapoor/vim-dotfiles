@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go gh x11-xkb-utils x11-xserver-utils ssh-import-id vim-youcompleteme vim-addon-manager qemu-guest-agent git-crypt -y
+  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go gh x11-xkb-utils x11-xserver-utils ssh-import-id vim-youcompleteme vim-addon-manager qemu-guest-agent git-crypt scrypt -y
   echo "Enabling SSH with github keys."
   ssh-import-id gh:divyekapoor
   echo "Enabling YCM with vim-addon-manager"
@@ -12,6 +12,8 @@ if [[ "$(uname)" != "Darwin" ]]; then
   sudo service start qemu-guest-agent
   echo "Enabling docker for the user without root permissions."
   sudo usermod -aG docker $USER && newgrp docker
+  echo "Installing SSH Keys."
+  scrypt dec ssh.tar.gz.scrypt ssh.tar.gz && tar xvzf ssh.tar.gz --directory $HOME && rm ssh.tar.gz
 elif [[ "$(uname)" == "Darwin" ]]; then
   # Set up locatedb
   sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist

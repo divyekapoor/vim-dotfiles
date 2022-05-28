@@ -51,6 +51,7 @@ if [[ "$(basename ${SHELL})" == "zsh" && -o login && -o interactive ]]; then
   if [[ "$ZSH_THEME" != "lukerandall" ]]; then
     omz theme use lukerandall
   fi
+  export RPROMPT='[%D{%-I:%M:%S %p}]'
 fi
 
 

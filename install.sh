@@ -1,7 +1,11 @@
 #!/bin/bash
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go gh x11-xkb-utils x11-xserver-utils ssh-import-id npm -y
+  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go gh x11-xkb-utils x11-xserver-utils ssh-import-id vim-youcompleteme vim-addon-manager -y
+  echo "Enabling SSH with github keys."
+  ssh-import-id gh:divyekapoor
+  echo "Enabling YCM with vim-addon-manager"
+  vim-addon-manager install youcompleteme
   echo "Install ITerm shell integration"
   curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
 elif [[ "$(uname)" == "Darwin" ]]; then
@@ -61,15 +65,9 @@ rm -rf ~/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-echo "Setting up oh-my-zsh"
+echo "Setting up oh-my-zsh. Please exit the zsh shell to continue the install."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install YCM.
-cd ~/.vim/bundle/YouCompleteMe && python3 install.py --all --verbose
-cd -
-
-# Install SSH keys
-ssh-import-id gh:divyekapoor
-
 echo "Please source your .bashrc or .zshrc to continue."
 echo "Done"

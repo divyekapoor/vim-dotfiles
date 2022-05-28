@@ -29,6 +29,7 @@ alias llog='tail -50 ~/LOG.txt'
 if [[ "$(uname)" != "Darwin" ]]; then
   # setxkbmap -option "ctrl:swapcaps"
   # xset r rate 135 30
+  echo -n
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -40,6 +41,7 @@ fi
 
 export GOPATH=$HOME/go
 export PATH=/usr/local/opti/openssl@1.1/bin:$HOME/bin:$HOME/.fzf/bin:$GOPATH/bin:$JAVA_HOME/bin:$FLINK_HOME/bin:$PATH
+export ZSH_THEME="lukerandall"
 
 # ZSH completions.
 if [[ "$(basename ${SHELL})" == "zsh" && -o login && -o interactive ]]; then

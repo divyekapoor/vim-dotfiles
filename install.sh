@@ -10,6 +10,8 @@ if [[ "$(uname)" != "Darwin" ]]; then
   curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
   echo "Enabling QEMU guest agent."
   sudo service start qemu-guest-agent
+  echo "Enabling docker for the user without root permissions."
+  sudo usermod -aG docker $USER && newgrp docker
 elif [[ "$(uname)" == "Darwin" ]]; then
   # Set up locatedb
   sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist

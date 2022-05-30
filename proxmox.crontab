@@ -1,0 +1,8 @@
+# 
+# Apply this crontab with the following:
+# crontab -i /root/src/vim-dotfiles/proxmox.crontab
+#
+# Manual apply: 
+# crontab -e 
+# 
+@reboot /root/src/vim-dotfiles/proxmox_startup.sh

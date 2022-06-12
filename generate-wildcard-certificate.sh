@@ -34,7 +34,7 @@ commonName = $WILDCARD
 organizationalUnitName = home
 emailAddress = $(git config user.email)
 [v3_req]
-keyUsage = keyEncipherment, dataEncipherment
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 [alt_names]

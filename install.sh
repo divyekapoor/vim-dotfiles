@@ -16,7 +16,7 @@ if [[ "$(uname)" != "Darwin" ]]; then
   scrypt dec ssh.tar.gz.scrypt ssh.tar.gz && tar xvzf ssh.tar.gz --directory $HOME && rm ssh.tar.gz
   echo "Importing GPG Key."
   gpg --import ~/.ssh/divye-mac.gpg.private
-  expect -c 'spawn gpg --edit-key {KEY} trust quit; send "5\ry\r"; expect eof'
+  expect -c 'spawn gpg --edit-key divyekapoor@gmail.com trust quit; send "5\ry\r"; expect eof'
 elif [[ "$(uname)" == "Darwin" ]]; then
   # Set up locatedb
   sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist

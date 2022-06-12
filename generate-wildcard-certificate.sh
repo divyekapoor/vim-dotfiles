@@ -38,8 +38,8 @@ keyUsage = keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 [alt_names]
-DNS.1   = https.$DOMAIN
-DNS.2   = *.https.$DOMAIN
+DNS.1   = portainer.$DOMAIN
+DNS.2   = *.portainer.$DOMAIN
 IP   = 192.168.50.2
 EOF
 

@@ -40,7 +40,7 @@ subjectAltName = @alt_names
 [alt_names]
 DNS.1   = https.$DOMAIN
 DNS.2   = *.https.$DOMAIN
-IP   = 10.0.0.1
+IP   = 192.168.50.2
 EOF
 
 # Generate our Private Key, and Certificate directly

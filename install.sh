@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go gh x11-xkb-utils x11-xserver-utils ssh-import-id vim-youcompleteme vim-addon-manager qemu-guest-agent git-crypt scrypt gpg -y
+  sudo apt install curl vim bash-completion htop nethogs iotop silversearcher-ag docker.io python3-dev cmake zsh clang golang-go gh x11-xkb-utils x11-xserver-utils ssh-import-id vim-youcompleteme vim-addon-manager qemu-guest-agent git-crypt scrypt gpg nfs-common -y
   echo "Enabling SSH with github keys."
   ssh-import-id gh:divyekapoor
   echo "Enabling YCM with vim-addon-manager"
